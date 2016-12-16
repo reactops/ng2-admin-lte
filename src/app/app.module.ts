@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { AlertModule, DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertModule, DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { ToasterModule } from 'angular2-toaster/angular2-toaster';
 import { environment } from '../environments/environment';
@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 let modules = [
   AlertModule,
   DatepickerModule,
+  TimepickerModule,
   BrowserModule,
   FormsModule,
   HttpModule,
@@ -59,12 +60,14 @@ let services = [
 
 import { HomeComponent } from './pages/home/home.component';
 import { PageNumComponent } from './pages/page-num/page-num.component';
+import { PageMessageComponent } from './pages/page-message/page-message.component';
 import { ClientComponent } from './pages/client/client.component';
 
 let pages = [
   HomeComponent,
   PageNumComponent,
   ClientComponent,
+  PageMessageComponent
 ];
 
 // main bootstrap

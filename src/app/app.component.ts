@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
+import { Group } from './models/group';
+import { Actor } from './models/actor';
+import { Context, ContextType, ContextVisibilityType } from './models/context';
 import { UserService } from './services/user.service';
 import { Message } from './models/message';
 import { MessagesService } from './services/messages.service';
@@ -35,24 +38,30 @@ export class AppComponent implements OnInit {
     }
 
     // envoi d'un user de test
-    let user1 = new User({
-      avatarUrl: 'public/assets/img/user2-160x160.jpg',
+    let user1: Actor = new User({
+      // avatarUrl: 'public/assets/img/user0-160x160.jpg',
       email: 'weber.antoine.pro@gmail.com',
       firstname: 'WEBER',
       lastname: 'Antoine'
     });
-    let user2 = new User({
-      avatarUrl: 'public/assets/img/user2-160x160.jpg',
+    let user2: Actor = new Group({
+      // avatarUrl: 'public/assets/img/user0-160x160.jpg',
       email: 'EMAIL',
       firstname: 'FIRSTNAME',
       lastname: 'LASTNAME'
     });
     this.userServ.setCurrentUser(user1);
 
+    let mContext: Context = new Context({
+      contextType: ContextType.ROOMS,
+      contextVisibilityType: ContextVisibilityType.PRIVATE
+    });
+
     // envoi d'un message de test
     this.msgServ.addMessage(new Message({
       author: user2,
       content: 'le contenu d\'un message d\'une importance extreme',
+      context: mContext,
       destination: user1,
       title: 'un message super important'
     }));

@@ -5,6 +5,7 @@ import { CanActivateGuard } from './services/guard.service';
 // Components
 import { HomeComponent } from './pages/home/home.component';
 import { PageNumComponent } from './pages/page-num/page-num.component';
+import { PageMessageComponent } from './pages/page-message/page-message.component';
 import { ClientComponent } from './pages/client/client.component';
 
 const routes: Routes = [
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     component: HomeComponent,
     path: ''
+  },
+  {
+    canActivate: [CanActivateGuard],
+    component: PageMessageComponent,
+    path: 'messages/:subroute/:id'
   },
   {
     canActivate: [CanActivateGuard],

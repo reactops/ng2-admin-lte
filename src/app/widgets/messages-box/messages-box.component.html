@@ -8,22 +8,20 @@
 	<li>
 		<!-- inner menu: contains the messages -->
 		<ul class="menu">
-			<li *ngFor="let msg of messages; let i = index">
-				<!-- start message --> <a href="#">
+			<template ngFor let-item [ngForOf]="messages">
+			<li [class.active]="item.context.route[0] === current_url"><a
+				[routerLink]="item.context.route">
 					<div class="pull-left">
 						<!-- User Image -->
-						<img src="{{msg.author.avatarUrl}}" class="img-circle"
-							alt="{{ msg.author.getName() }}">
+						<img src="{{ item.author.getAvatarUrl() }}" class="img-circle"
+							alt="{{ item.author.getName() }}">
 					</div> <!-- Message title and timestamp -->
-					<h4>
-						{{msg.title}} <small><i class="fa fa-clock-o"></i>
-							{{msg.date}}</small>
-					</h4> <!-- The message -->
-					<p>{{msg.content}}</p>
-			</a>
-			</li>
-			<!-- end message -->
+					<h4>{{item.title}}</h4> <!-- The message -->
+					<p>{{item.content}}</p> <small><i class="fa fa-clock-o"></i>
+						{{item.getDateInClientLocale()}}</small>
+			</a></li>
+			<!-- end message --> </template>
 		</ul> <!-- /.menu -->
-	</li>
 	<li class="footer"><a href="#">See All Messages</a></li>
 </ul>
+

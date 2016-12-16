@@ -7,10 +7,9 @@ import { BreadcrumbService } from '../../services/breadcrumb.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public date: Date = new Date();
+  public date: string = new Date(Date.now()).toLocaleString();
 
   constructor(private breadServ: BreadcrumbService) {
-    // TODO
   }
 
   public ngOnInit() {

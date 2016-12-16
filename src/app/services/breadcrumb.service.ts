@@ -7,13 +7,13 @@ export class BreadcrumbService {
   private initialData: any = {
     description: '',
     display: false,
-    header : '',
+    header: '',
 
     levels: [
       {
-        icon: 'clock-o',
+        icon: 'dashboard',
         link: ['/'],
-        title: 'Default'
+        title: 'Home'
       }
     ]
   };

@@ -1,9 +1,10 @@
-import { Component }  from '@angular/core';
-import { Router }             from '@angular/router';
-import { BreadcrumbService }        from '../../services/breadcrumb.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BreadcrumbService } from '../../services/breadcrumb.service';
 
 @Component({
   selector: 'app-breadcrumb',
+  styleUrls: ['./breadcrumb.component.css'],
   templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent {

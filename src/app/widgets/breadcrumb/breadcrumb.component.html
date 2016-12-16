@@ -1,15 +1,13 @@
 <section class="content-header" *ngIf="display">
-  <h1>
-    {{ header }}
-    <small>{{ description }}</small>
-  </h1>
-  <ol class="breadcrumb">
-    <template let-item ngFor [ngForOf]="levels">
-      <li [class.active]="item.active">
-        <a [routerLink]="item.link">
-          <i class="fa fa-{{item.icon}}"></i> {{ item.title }}
-        </a>
-      </li>
-    </template>
-  </ol>
+	<h1>
+		{{ header }} <small>{{ description }}</small>
+	</h1>
+	<ol class="breadcrumb">
+		<template let-item ngFor [ngForOf]="levels">
+		<li [class.active]="item.active"><a [routerLink]="item.link">
+				<i class="fa fa-{{item.icon}}"></i>
+				<u class="text-capitalize">{{ item.title }}</u>
+		</a></li>
+		</template>
+	</ol>
 </section>

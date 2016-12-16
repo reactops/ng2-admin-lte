@@ -2,7 +2,8 @@
 	home works!
 
 	<alert type="info">Hello from ng2-bootstrap {{
-	date.toDateString() }}</alert>
+	date.toString() }}</alert>
 
-	<datepicker [(ngModel)]="date" showWeeks="true"></datepicker>
+	<datepicker [(ngModel)]="date" [showWeeks]="true"></datepicker>
+	<timepicker [(ngModel)]="date" [showMeridian]="false"></timepicker>
 </p>
