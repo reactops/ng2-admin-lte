@@ -6,6 +6,7 @@ import { Message } from './models/message';
 import { MessagesService } from './services/messages.service';
 import { ToasterService, ToasterConfig } from 'angular2-toaster/angular2-toaster';
 import { AdminLTETranslateService } from './services/translate.service';
+import { PreferencesService } from './services/preferences.service';
 
 @Component( {
     selector: 'app-root',
@@ -15,15 +16,17 @@ import { AdminLTETranslateService } from './services/translate.service';
 export class AppComponent implements OnInit {
     private title = 'app works!';
     private toastrConfig: ToasterConfig;
-    private logger: LoggerService;
+    // private logger: LoggerService;
 
     constructor( private userServ: UserService, private msgServ: MessagesService,
-        private toastr: ToasterService, private translate: AdminLTETranslateService ) {
+        private toastr: ToasterService, private translate: AdminLTETranslateService,
+        private prefServ: PreferencesService, private logger: LoggerService ) {
         this.toastrConfig = new ToasterConfig( {
             newestOnTop: true,
             showCloseButton: true,
             tapToDismiss: false
         });
+        prefServ
         // this.translate = translate.getTranslate();
         // this.logger = new LoggerService( this.translate );
     }

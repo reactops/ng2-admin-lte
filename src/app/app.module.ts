@@ -63,6 +63,7 @@ import { NotificationService } from './services/notification.service';
 import { BreadcrumbService } from './services/breadcrumb.service';
 import { AdminLTETranslateService } from './services/translate.service';
 import { LoggerService } from './services/logger.service';
+import { PreferencesService } from './services/preferences.service';
 
 let services = [
     UserService,
@@ -72,7 +73,8 @@ let services = [
     CanActivateGuard,
     NotificationService,
     AdminLTETranslateService,
-    LoggerService
+    LoggerService,
+    PreferencesService
 ];
 
 import { HomeComponent } from './pages/home/home.component';

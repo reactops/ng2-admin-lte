@@ -2,6 +2,8 @@ import { Injectable, OnInit } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
 import { UserService } from './user.service';
 import { User } from '../models/user';
+import { PreferencesService } from './preferences.service';
+import { Preferences } from '../models/preferences';
 
 const langs = ['en', 'fr', 'ru', 'he', 'zh'];
 const langmatch = /en|fr|ru|he|zh/;
@@ -11,7 +13,8 @@ export class AdminLTETranslateService implements OnInit {
     private lang: string = 'us';
     private currentUser: User;
 
-    constructor( private userServ: UserService, private translate: TranslateService ) {
+    constructor( private userServ: UserService, private translate: TranslateService,
+        private prefServ: PreferencesService ) {
         translate.addLangs( langs );
         // this language will be used as a fallback when a translation isn't found in the current language
         translate.setDefaultLang( 'en' );
@@ -24,9 +27,17 @@ export class AdminLTETranslateService implements OnInit {
             let browserCultureLang = this.translate.getBrowserCultureLang();
             console.log( 'Detected browser language: "' + browserCultureLang + '"' );
 
+            /** 
+             * Currently we set System Preferred Lang to Browser Detected.
+             * In future this will be retrieved from Persistent Storage.
+             */  
+            let systemPreferences = this.currentUser.preferences.parentPreferences;
+            systemPreferences.setPreferredLang( browserLang );
+            this.prefServ.setSystemPreferences( systemPreferences );
+
             // check if current User has a Preferred Language set, and it differs from his browser lang
             let useLang = 'en';
-            let prefLang = ( this.currentUser ) ? this.currentUser.preferredLang : null;
+            let prefLang = ( this.currentUser ) ? this.currentUser.getPreferredLang() : null;
             if ( !prefLang ) {
                 useLang = browserLang.match( langmatch ) ? browserLang : 'en';
             } else {
