@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
             showCloseButton: true,
             tapToDismiss: false
         });
-        prefServ
         // this.translate = translate.getTranslate();
         // this.logger = new LoggerService( this.translate );
     }

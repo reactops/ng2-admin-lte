@@ -30,7 +30,7 @@ export class AdminLTETranslateService implements OnInit {
             /** 
              * Currently we set System Preferred Lang to Browser Detected.
              * In future this will be retrieved from Persistent Storage.
-             */  
+             */
             let systemPreferences = this.currentUser.preferences.parentPreferences;
             systemPreferences.setPreferredLang( browserLang );
             this.prefServ.setSystemPreferences( systemPreferences );
